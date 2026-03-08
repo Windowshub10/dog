@@ -43,17 +43,15 @@ access-list 100 permit icmp 172.22.34.64 0.0.0.31 host 172.22.34.62
 int gig 0/0
 ip access-group 100 in
 
-#ping in pc1
+#ping in pc1 
+(unsuccessfull)
 ping 172.22.34.62
 ftp 172.22.34.62
-
 Username: cisco
 Password: cisco
-
 ##to exit
 quit
-##now ping pc 2
-ping 172.22.34.98
+ping 172.22.34.98 (Destination host unreachable)
 
 # in R1(config)
 
@@ -72,15 +70,14 @@ ip access-group HTTP_ONLY in
 exit
 
 #in PC2 cmd
-ping 172.22.34.62
+ping 172.22.34.62  (successful)
 ftp 172.22.34.62   (Error)
-
 # Desktop- Web browser
-
 URL= http://172.22.34.62  (successful)
 
 #in PC2 cmd
 ping 172.22.34.66 (Destination host unreachable)
+
 
 
 
