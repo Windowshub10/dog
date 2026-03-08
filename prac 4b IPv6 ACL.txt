@@ -4,6 +4,15 @@
 # Take 2PC (PCA,B), 3 Switches2960, 3 Routers1941, Server
 #Connections , Add switch ports , then connect routers(Serial connections).
 
+          PC1  -> Switch0(Fa0/2)
+Switch0(Fa0/1) -> R1(Gig0/0)
+          PC2  -> Switch1(Fa0/2)
+Switch1(Fa0/1) -> R1(Gig0/1)
+       Server  -> Switch2(Fa0/2)
+Switch2(Fa0/1) -> R3(Gig0/0)
+   R1(Se0/1/0) -> R2(Se0/1/0)
+   R2(Se0/1/1) -> R3(Se0/1/0)
+
 #PCA
  ipv6 address:-  2001:DB8:1:10::10  /64   Gateway:- FE80::1
 #PCB
@@ -122,6 +131,7 @@ ping 2001:DB8:1:30::30(Unreachable aana chahiye)
 ping 2001:DB8:1:30::30 (Unreachable aana chahiye)
 
 Web browser: http://2001:DB8:1:30::30 
+
 
 
 
