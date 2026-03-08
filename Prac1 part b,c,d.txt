@@ -1,3 +1,5 @@
+## NTP, To log messages to the syslog server, to support SSH connections.
+
 ### PART  B
 Step 1: Part A should be successfully done
 
@@ -64,4 +66,5 @@ Enter password: ciscosshpa55
 Step 5: Go to R2 - CLI
 In R1#
 ssh -v 2 -l SSHadmin 10.2.2.1
+
 Enter password: ciscosshpa55
