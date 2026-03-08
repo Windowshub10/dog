@@ -1,3 +1,10 @@
+# Configure IP ACLs to Mitigate Attacks and IPV6 ACLs
+a Verify connectivity among devices before firewall configuration.
+b Use ACLs to ensure remote access to the routers is available only from
+Management station PC-C.
+c Configure ACLs on to mitigate attacks.
+
+
 #use Server(PCA), 2 Switches(2960)(S1,S2), 3 Routers(1941), 1Pc(PCC)
 #Attach Modules to router
 #Connections: Server(Fa0)-> Switch(S1)(Fa0/2)
@@ -149,5 +156,6 @@ exit
 ping 192.168.1.3
 ssh -l admin 192.168.2.1
 password:- adminpa55
+
 
 
