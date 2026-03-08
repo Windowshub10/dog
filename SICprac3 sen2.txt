@@ -47,18 +47,80 @@ line console 0
 password tyit
 login
 
-#PCA(cmd)
+#PCA(cmd)(Successful)
 ping 10.101.117.35
 ping 10.101.117.2
 
-#PCB(cmd)
+#PCB(cmd)(Successful)
 ping 10.101.117.2
 
 
+#SWA,SWB,SWC,RTA(config)
+ip domain-name ccnasecurity.com
+username admin secret adminpa55
+line vty 0 4
+login local
+crypto key generate rsa
+How many bits in the modulus [512]: 1024
 
 
+#PCA
+ssh -l Admin 10.101.117.34
+Password: adminpa55
+ssh -l Admin 10.101.117.2
+Password: adminpa55
+exit
+
+#PCB>
+ssh -l Admin 10.101.117.50
+Password: adminpa55
+exit
+ssh -l Admin 10.101.117.2
+Password: adminpa55
+
+#SWC> (In PCB only)
+en
+ssh -l Admin 10.101.117.50
+Password: adminpa55
+exit
+ssh -l Admin 10.101.117.34
+Password: adminpa55
+exit
+
+#RTA(config)#
+access-list 199 permit tcp 10.101.117.32 0.0.0.15 10.101.117.0 0.0.0.31 eq 22
+access-list 199 permit icmp any any
+int gig0/2
+ip access-group 199 out
+
+#PCB> ping 10.101.117.51
+(Successful)
+PCB> ping 10.101.117.2
+(Successful)
 
 
+PCB> ssh -l Admin 10.101.117.2
+Password:adminpa55
+SWC>exit
+
+PCA> ping 10.101.117.35
+(Successful)
+PCA> ping 10.101.117.2
+(Successful)
+
+
+PCA> ssh -l Admin 10.101.117.2  (Connection timed out.)
+
+PCA> ssh -l Admin 10.101.117.34
+Password: adminpa55
+(PCA only)
+en
+Password: enpa55
+SWB# ssh -l Admin 10.101.117.2
+Password: adminpa55
+
+exit
+exit
 
 
 
