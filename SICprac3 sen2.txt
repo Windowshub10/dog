@@ -14,32 +14,31 @@ Gig0/2 :- 10.101.117.1   255.255.255.224
 #PCA :- 10.101.117.51  255.255.255.248  10.101.117.49
 #PCB :- 10.101.117.35  255.255.255.240  10.101.117.33 
 
-#SWA (cli)
+#SWA (config)
 int vlan 1
 ip address 10.101.117.50 255.255.255.248
 no shut
 ip default-gateway 10.101.117.49
 
-#SWB
+#SWB(config)
 int vlan 1
 ip address 10.101.117.34 255.255.255.240
 no shut
 ip default-gateway 10.101.117.33
 
-#SWC
+#SWC(config)
 int vlan 1
 ip address 10.101.117.2 255.255.255.224
 no shut
 ip default-gateway 10.101.117.1
 
-#Now in SWA, SWB,SWC  (CLI)
+#Now in SWA, SWB,SWC  (config)
 enable secret enpa55
 line console 0
 password tyit
 login
 
-#RTA
-exit
+#RTA(config)
 enable secret enpa55
 line console 0
 password tyit
@@ -51,6 +50,7 @@ ping 10.101.117.2
 
 #PCB(cmd)
 ping 10.101.117.2
+
 
 
 
