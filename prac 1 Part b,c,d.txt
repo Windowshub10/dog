@@ -1,0 +1,68 @@
+### PART  B
+Step 1: Part A should be successfully done
+
+Step 2: Go to PC-A
+Service -> NTP -> authentication (enable)
+key = 2 and pass = NTPpa55
+
+Step 3: Go to R1#
+show clock
+
+Step 4: In config (All R1, R2, R3)
+ntp server 192.168.1.5
+ntp update-calendar
+
+Step 5: In R1#
+show clock
+
+Step 6: In (config) of (All R1, R2, R3)
+ntp authenticate
+ntp trusted-key 2
+ntp authentication-key 2 md5 NTPpa55
+
+Step 7: In (config) of (All 3 routers)
+service timestamps log datetime msec
+
+
+### PART C
+Step 1: In (config) (All 3 routers)
+logging host 192.168.1.6
+
+Step 2: In R1# of (All 3 routers)
+show logging
+
+And go to PC-B - service and then syslog server.
+
+
+### PART D 
+Step 1: Go to R3(config)
+ip domain-name ccnasecurity.com
+username SSHadmin privilege 15 secret ciscosshpa55
+line vty 0 4
+login local
+transport input ssh
+crypto key zeroize rsa
+(If this message will get :- No Signature RSA... Its Okay)
+crypto key generate rsa ---> 1024 type
+
+Step 2: Go to R1#
+show ip ssh
+
+Step 3: Go to R3(config)
+ip ssh time-out 90
+ip ssh authentication-retries 2
+ip ssh version 2
+
+Then return to R1#
+show ip ssh
+
+Step 4: Go to PC-C --> Command Prompt
+telnet 192.168.3.1
+(The Connection will failed...)
+ssh -l SSHadmin 192.168.3.1
+Enter password: ciscosshpa55
+
+Step 5: Go to R2 - CLI
+In R1#
+ssh -v 2 -l SSHadmin 10.2.2.1
+Enter password: ciscosshpa55
