@@ -3,7 +3,7 @@
    b) Modify an IPS signature.
 
 
-# Use  Server(Syslog), 3Router(1941), 2Switch(S1,S3), 2PC (PC-A,PC-B)
+# Use  Server(Syslog), 3Router(1941), 2Switch(S1,S3) (2960), 2PC (PC-A,PC-B)
 #Give names
 #Give modules to the router than give names to router
 #Connections
@@ -190,6 +190,7 @@ Click the Syslog server->Services tab-> SYSLOG
 
 
  
+
 
 
 
