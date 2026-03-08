@@ -1,5 +1,7 @@
 ## Configure AAA Authentication
-
+a) Configure a local user account on Router and configure authenticate on the console and
+Vty lines using local AAA
+b) Verify local AAA authentication from the Router console and the PC-A client
 Prac 2 (Method 2)
 Take :-
 
@@ -145,6 +147,7 @@ end
 exit
 #Then Enter : Username = Admin3
 password = admin3pa55
+
 
 
 
