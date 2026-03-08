@@ -29,8 +29,8 @@ R3 :- Gig(0/0) :- 192.168.3.1  255.255.255.0
 
 
 
-#R1,R2,R3
-EXIT
+#R1,R2,R3(config)
+#type EXIT
 enable secret enpa55
 
 #R1,R2,R3
@@ -156,6 +156,7 @@ exit
 ping 192.168.1.3
 ssh -l admin 192.168.2.1
 password:- adminpa55
+
 
 
 
