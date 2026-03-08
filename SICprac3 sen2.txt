@@ -1,3 +1,6 @@
+# Configuring Extended ACLs
+# Configure, Apply and Verify an Extended Numbered ACL
+
 #Scenario 2 use:- 2 PC, 3 Switch(2960), 1 Router(2911)
 #Connection pcA(Fa0)-> switch-SWA(Fa0/2)->router(Gig0/0)
             router(Gig0/1)->Switch-SWB(Fa0/1)
@@ -50,6 +53,7 @@ ping 10.101.117.2
 
 #PCB(cmd)
 ping 10.101.117.2
+
 
 
 
