@@ -51,7 +51,7 @@ How many bits in the modulus [512]: 1024
 #R1
 router ospf 1 
 network 192.168.1.0 0.0.0.255 area 0 
-10.1.1.0 0.0.0.3 area 0 
+network 10.1.1.0 0.0.0.3 area 0 
 exit
 
 #R2
@@ -133,7 +133,7 @@ R1# >  show ip ips all    #(enter enter marte jana)
 #Click the Syslog server->Services tab-> SYSLOG 
 (Output will be shown) 
 
-#R1
+#R1(config)
 ip ips signature-definition 
 signature 2004 0 
 status 
@@ -190,6 +190,7 @@ Click the Syslog server->Services tab-> SYSLOG
 
 
  
+
 
 
 
