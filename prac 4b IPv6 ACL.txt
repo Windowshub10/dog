@@ -7,7 +7,7 @@
           PCA  -> Switch0(Fa0/2)
 Switch0(Fa0/1) -> R1(Gig0/0)
           PCB  -> Switch1(Fa0/2)
-Switch1(Fa0/1) -> R2(Gig0/1)
+Switch1(Fa0/1) -> R1(Gig0/1)
        Server  -> Switch2(Fa0/2)
 Switch2(Fa0/1) -> R3(Gig0/0)
    R1(Se0/1/0) -> R2(Se0/1/0)
@@ -131,6 +131,7 @@ ping 2001:DB8:1:30::30(Unreachable aana chahiye)
 ping 2001:DB8:1:30::30 (Unreachable aana chahiye)
 
 Web browser: http://2001:DB8:1:30::30 
+
 
 
 
