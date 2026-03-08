@@ -67,6 +67,7 @@ How many bits in the modulus [512]: 1024
 #PCA
 ssh -l Admin 10.101.117.34
 Password: adminpa55
+exit
 ssh -l Admin 10.101.117.2
 Password: adminpa55
 exit
@@ -121,6 +122,7 @@ Password: adminpa55
 
 exit
 exit
+
 
 
 
