@@ -1,3 +1,6 @@
+##  Configure IP ACLs to Mitigate Attacks and IPV6 ACLs
+## Configuring IPv6 ACLs
+
 # Take 2PC (PCA,B), 3 Switches2960, 3 Routers1941, Server
 #Connections , Add switch ports , then connect routers(Serial connections).
 
@@ -119,5 +122,6 @@ ping 2001:DB8:1:30::30(Unreachable aana chahiye)
 ping 2001:DB8:1:30::30 (Unreachable aana chahiye)
 
 Web browser: http://2001:DB8:1:30::30 
+
 
 
