@@ -1,0 +1,153 @@
+Prac 2 (Method 2)
+Take :-
+
+3 Routers (1941), PC-A,B,C , 3 Switches (2960) ,2 Servers (TACACS, RADIUS)
+
+#Put 2 modules (HWIC-2T) in all Routers
+
+#Router Configurations
+#R1
+G0/1 -> 192.168.1.1 - 255.255.255.0
+S0/0/0 -> 10.1.1.2 - 255.255.255.252
+
+#R2
+S0/0/0 -> 10.1.1.1 - 255.255.255.252
+S0/0/1 -> 10.2.2.1 - 255.255.255.252
+G0/0 -> 192.168.2.1 - 255.255.255.0
+
+#R3
+G0/1 -> 192.168.3.1 - 255.255.255.0
+S0/0/1 -> 10.2.2.2 - 255.255.255.252
+
+#PC-A -> 192.168.1.3 - 255.255.255.0 - 192.168.1.1
+#PC-B -> 192.168.2.3 - 255.255.255.0 - 192.168.2.1
+#PC-C -> 192.168.3.3 - 255.255.255.0 - 192.168.3.1
+#TACACS -> 192.168.2.2 - 255.255.255.0 - 192.168.2.1
+#RADIUS -> 192.168.3.2 - 255.255.255.0 - 192.168.3.1
+
+
+#R1, R2, R3
+line vty 0 4
+password admin
+login
+exit
+
+#R1
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+
+#R2
+router ospf 2
+network 192.168.2.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+
+#R3
+router ospf 3
+network 192.168.3.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.255 area 0
+
+
+#Part A- In CLI R1(config)
+
+username Admin1 secret admin1pa55
+aaa new-model
+aaa authentication login default local
+
+line console 0
+login authentication default
+end
+exit
+
+#Enter this:
+Username: Admin1
+Password: admin1pa55
+
+#If successfully login then Part A successfully done.
+
+
+
+en
+conf t
+
+ip domain-name ccnasecurity.com
+crypto key generate rsa -> 1024 type
+
+aaa authentication login SSH-LOGIN local
+line vty 0 4
+login authentication SSH-LOGIN
+transport input ssh
+end
+
+
+#PC-A
+
+ssh -l Admin1 192.168.1.1
+enter password :- admin1pa55
+
+
+#Part B- In CLI R2(config)
+
+Username Admin2 secret admin2pa55
+
+#Click on TACACS server
+Go to Service
+go to AAA -> on it
+Enter :- Client name - R2
+Client IP - 192.168.2.1
+Secret - tacacspa55
+Server Type - tacacs
+
+In user setup :- Username : Admin2
+Password : admin2pa55
+
+Step 2: Go to CLI In (config)
+
+aaa new-model
+aaa authentication login default group tacacs+ local
+line console 0
+login authentication default
+end
+exit
+
+#Then Enter :- Username : Admin2
+Password : admin2pa55
+
+
+# Part3:-  R3
+
+Step 1: In CLI R3(config)
+
+username Admin3 secret admin3pa55
+
+#click on RADIUS Server
+Go to services
+go to AAA
+
+Enter :- Client name :- R3
+client IP : 192.168.3.1
+secret : radiuspa55
+Server Type : radius
+
+#In User Setup :- username : Admin3
+password : admin3pa55
+
+Step 2: Go to CLI (config)
+
+aaa new-model
+aaa authentication login default group radius local
+line console 0
+login authentication default
+end
+exit
+#Then Enter : Username = Admin3
+password = admin3pa55
+
+
+
+
+
+
+
+

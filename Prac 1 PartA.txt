@@ -1,0 +1,85 @@
+Use: 2Server(PC-A(NTP Server), B(Syslog Server)), 3Routers(1941), 1PC(PC-C(SSH Client)), 2Switches 2960(S1,2)
+Connections:   ## Add Ports to Routers ####
+
+              PC-A -> S1(Fa0/1)
+              PC-B -> S1(Fa0/2) 
+              S1(Fa0/3) -> R1(Gig0/0)
+              R1(Se0/1/0) -> R2(Se0/1/0)
+              R2(Se0/1/1) -> R3(Se0/1/0)
+              R3(Gig0/0) -> S2(Fa0/1)    
+              S2(Fa0/2)  -> PC-C(Fa0)      
+                          
+              
+# Give IP Address   
+| Device | Interface | IP Address  | Subnet Mask     | Default Gateway |
+| ------ | --------- | ----------- | --------------- | --------------- |
+| R1     | gig0/0    | 192.168.1.1 | 255.255.255.0   | N/A             |
+|        | Se0/1/0   | 10.1.1.1    | 255.255.255.252 | N/A             |
+| R2     | Se0/1/0   | 10.1.1.2    | 255.255.255.252 | N/A             |
+|        | Se0/1/1   | 10.2.2.2    | 255.255.255.252 | N/A             |
+| R3     | gig0/0    | 192.168.3.1 | 255.255.255.0   | N/A             |
+|        | Se0/1/0   | 10.2.2.1    | 255.255.255.252 | N/A             |
+| PC-A   | NIC       | 192.168.1.5 | 255.255.255.0   | 192.168.1.1     |
+| PC-B   | NIC       | 192.168.1.6 | 255.255.255.0   | 192.168.1.1     |
+| PC-C   | NIC       | 192.168.3.5 | 255.255.255.0   | 192.168.3.1     |
+
+
+IN R1,R2,R3:-
+line vty 0 4
+password vtypa55
+login
+exit
+enable secret enpa55
+
+In R1:-
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 10.1.1.0 0.0.0.255 area 0
+area 0 authentication message-digest
+exit
+
+In R2:-
+router ospf 2
+network 10.1.1.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.255 area 0
+area 0 authentication message-digest
+exit
+
+In R3:-
+router ospf 3
+network 192.168.3.0 0.0.0.255 area 0
+network 10.2.2.0 0.0.0.255 area 0
+area 0 authentication message-digest
+exit
+
+In R1:-
+interface s0/1/0
+ip ospf authentication message-digest
+ip ospf message-digest-key 2 md5 MD5pa55
+exit
+
+In R2:-
+interface s0/1/0
+ip ospf authentication message-digest
+ip ospf message-digest-key 2 md5 MD5pa55
+exit
+interface s0/1/1
+ip ospf authentication message-digest
+ip ospf message-digest-key 2 md5 MD5pa55
+exit
+
+In R3:-
+interface s0/1/0
+ip ospf authentication message-digest
+ip ospf message-digest-key 2 md5 MD5pa55
+exit
+
+IN R1,R2,R3:-
+exit
+exit
+show ip ospf interface
+
+
+OutPut:- 
+message-digest authentication enabled
+youngest key id is 2
