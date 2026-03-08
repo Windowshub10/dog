@@ -1,3 +1,5 @@
+### Configuring a Zone-Based Policy Firewall
+
 #Take Server(PCA),2 Switches(2960), 3 Routers(1941), 1PC(PCC)
 #Give modules to router
 #Connections  Server(PCA)->Switch->R1->R2->R3->Switch->PCC
@@ -173,6 +175,7 @@ en
 
 ping 192.168.3.3 
 (Unsuccessful – Request timed out) 
+
 
 
 
