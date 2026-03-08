@@ -1,3 +1,5 @@
+## OSPF MD5 authentication
+
 Use: 2Server(PC-A(NTP Server), B(Syslog Server)), 3Routers(1941), 1PC(PC-C(SSH Client)), 2Switches 2960(S1,2)
 Connections:   ## Add Ports to Routers ####
 
@@ -82,4 +84,5 @@ show ip ospf interface
 
 OutPut:- 
 message-digest authentication enabled
+
 youngest key id is 2
