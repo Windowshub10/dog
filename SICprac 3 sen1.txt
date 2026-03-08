@@ -1,4 +1,6 @@
 ## Configuring Extended ACLs
+## Configure, Apply and Verify an Extended Numbered ACL
+
 
 # For Scenario 1:-   USE Server , 3 Switch(2960), 1 Router(2911), 2 PC.
 
@@ -79,6 +81,7 @@ URL= http://172.22.34.62  (successful)
 
 #in PC2 cmd
 ping 172.22.34.66 (Destination host unreachable)
+
 
 
 
