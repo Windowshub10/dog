@@ -51,7 +51,7 @@ quit
 ##now ping pc 2
 ping 172.22.34.98
 
-# in R1(CLI)
+# in R1(config)
 
 exit
 
@@ -77,6 +77,7 @@ URL= http://172.22.34.62  (successful)
 
 #in PC2 cmd
 ping 172.22.34.66 (Destination host unreachable)
+
 
 
 
