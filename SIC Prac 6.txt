@@ -1,4 +1,6 @@
 ## Configure IOS Intrusion Prevention System(IPS)Using the CLI
+## a) Enable IOS IPS.
+   b) Modify an IPS signature.
 
 
 # Use  Server(Syslog), 3Router, 2Switch(S1,S3), 2PC (PC-A,PC-B)
@@ -188,6 +190,7 @@ Click the Syslog server->Services tab-> SYSLOG
 
 
  
+
 
 
 
