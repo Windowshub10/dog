@@ -107,7 +107,7 @@ enter password :- admin1pa55
 
 #Part B- In CLI R2(config)
 
-Username Admin2 secret admin2pa55
+username Admin2 secret admin2pa55
 
 #Click on TACACS server
 Go to Service
@@ -161,6 +161,7 @@ end
 exit
 #Then Enter : Username = Admin3
 password = admin3pa55
+
 
 
 
