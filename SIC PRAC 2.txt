@@ -10,6 +10,19 @@ Take :-
 
 #Put 2 modules (HWIC-2T) in all Routers
 
+#Connections:
+                PCB -> S2(Fa0/1)
+          S2(Fa0/2) -> Server1(TACACS)
+                PCA -> S1(Fa0/1)
+                PCC -> S3(Fa0/1)
+            Server2 -> S3(Fa0/2)
+          S1(Fa0/2) -> R1(Gig0/1)
+          S2(Fa0/3) -> R2(Gig0/0)
+          S3(Fa0/3) -> R3(Gig0/1)
+         R1(S0/0/0) -> R2(S0/0/0)
+         R2(S0/0/1) -> R3(S0/0/1)
+               
+
 #Router Configurations
 #R1
 G0/1 -> 192.168.1.1 - 255.255.255.0
@@ -148,6 +161,7 @@ end
 exit
 #Then Enter : Username = Admin3
 password = admin3pa55
+
 
 
 
